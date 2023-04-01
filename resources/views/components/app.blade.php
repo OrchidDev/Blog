@@ -6,6 +6,7 @@
     @include('components.include.style')
 </head>
 <body class="antialiased">
+    @include('components.include.navbar')
     {{$slot}}
     @include('components.include.javascript')
 </body>
