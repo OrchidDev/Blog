@@ -3,7 +3,7 @@
         <div class="col-md-6 offset-3" style="margin-top: 250px">
             <div class="card">
                 <div class="card-header">
-                    ثبت نام در سایت
+                    ورود به سایت
                 </div>
                 <div class="card-body">
                     <form action="{{ route('login.store') }}" method="POST">
@@ -41,6 +41,8 @@
             </div>
             <div class="text-center mt-3">
                 حساب کاربری ندارید؟ <a href="{{ route('register') }}" class="fw-bolder text-dark text-decoration-none">عضو شوید</a>
+                <br>
+                رمز عبور را فراموش کردید؟ <a href="{{ route('password.email') }}" class="fw-bolder text-dark text-decoration-none">وارد شوید</a>
             </div>
         </div>
     </div>
