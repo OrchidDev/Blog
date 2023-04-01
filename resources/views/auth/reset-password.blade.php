@@ -1,39 +1,47 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+<x-app-layout>
+    <div class="container">
+        <div class="col-md-6 offset-3" style="margin-top: 250px">
+            <div class="card">
+                <div class="card-header">
+                    بازیابی رمز عبور
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('password.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                        <div class="mb-3">
+                            <label for="Email1" class="form-label">ایمیل</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="Email1" value="{{ old('email') }}" placeholder="ایمیل خود را وارد کنید">
+                            @error('email')
+                            <div class="text-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="Password1" class="form-label">رمز عبور</label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="Password1" value="{{ old('password') }}" placeholder="رمز عبور قوی وارد کنید" autocomplete="new-password">
+                            @error('password')
+                            <div class="text-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="Password1" class="form-label">رمز عبور</label>
+                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="Password1" value="{{ old('password_confirmation') }}" placeholder="تکرار رمز عبور" autocomplete="new-password">
+                            @error('password_confirmation')
+                            <div class="text-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        <button type="submit" class="btn btn-primary">تغییر رمز عبور</button>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+</x-app-layout>
