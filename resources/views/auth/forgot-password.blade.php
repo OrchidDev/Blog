@@ -6,6 +6,11 @@
                     بازیابی رمز عبور
                 </div>
                 <div class="card-body">
+                    @if(Session::has('status'))
+                        <div class="alert alert-success mb-3" role="alert">
+                            {{Session::get('status')}}
+                        </div>
+                    @endif
                     <form action="{{ route('password.email') }}" method="POST">
                         @csrf
                         <div class="mb-3">
