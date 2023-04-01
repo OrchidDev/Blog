@@ -1,47 +1,47 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<x-app-layout>
+    <div class="container">
+        <div class="col-md-6 offset-3" style="margin-top: 250px">
+            <div class="card">
+                <div class="card-header">
+                    ثبت نام در سایت
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('login.store') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="Email1" class="form-label">ایمیل</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="Email1" value="{{ old('email') }}" placeholder="ایمیل خود را وارد کنید">
+                            @error('email')
+                            <div class="text-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="Password1" class="form-label">رمز عبور</label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="Password1" value="{{ old('password') }}" placeholder="رمز عبور قوی وارد کنید">
+                            @error('password')
+                            <div class="text-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="privacy" name="privacy">
+                            <label class="form-check-label" for="privacy">شرایط و قوانین را می پذیرم</label>
+                            @error('privacy')
+                            <div class="text-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary">ثبت نام</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                حساب کاربری ندارید؟ <a href="{{ route('register') }}" class="fw-bolder text-dark text-decoration-none">عضو شوید</a>
+            </div>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+</x-app-layout>

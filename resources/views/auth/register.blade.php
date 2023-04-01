@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="text-center mt-3">
-                حساب کاربر دارید؟ <a href="" class="fw-bolder text-dark text-decoration-none">وارد شوید</a>
+                حساب کاربری دارید؟ <a href="{{ route('login') }}" class="fw-bolder text-dark text-decoration-none">وارد شوید</a>
             </div>
         </div>
     </div>
