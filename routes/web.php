@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', function () {
-    return view('admin');
+    return view('admin.index');
 })->middleware(['auth', 'verified'])->name('admin');
 
 
