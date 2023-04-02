@@ -18,19 +18,21 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td class="text-center">
-                        <a href="" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
-                        <a href="" class="text-dark"><i class="fa-light fa-trash"></i></a>
-                    </td>
-                </tr>
+                @foreach($users as $row)
+                    <tr>
+                        <th scope="row">{{$row->id}}</th>
+                        <td>{{$row->name}}</td>
+                        <td>{{$row->email}}</td>
+                        <td>{{$row->role}}</td>
+                        <td>{{$row->created_at}}</td>
+                        <td class="text-center">تایید شده</td>
+                        <td class="text-center">آنلاین</td>
+                        <td class="text-center">
+                            <a href="" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
+                            <a href="" class="text-dark"><i class="fa-light fa-trash"></i></a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
