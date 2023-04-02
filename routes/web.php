@@ -22,7 +22,8 @@ Route::get('/admin', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('admin');
 
-Route::resource('/admin/users', UserController::class)->except('show');
+Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/admin/users/create', [UserController::class, 'create'])->name('users.create');
 
 
 require __DIR__.'/auth.php';

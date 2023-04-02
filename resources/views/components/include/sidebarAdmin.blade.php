@@ -28,7 +28,7 @@
                     <div class="accordion-body">
                         <ul>
                             <li class="mb-2"><a href="{{ route('users.index') }}" class="text-decoration-none text-dark">لیست کاربران</a></li>
-                            <li class="mb-2"><a href="" class="text-decoration-none text-dark">افزودن کاربر</a></li>
+                            <li class="mb-2"><a href="{{ route('users.create') }}" class="text-decoration-none text-dark">افزودن کاربر</a></li>
                         </ul>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
         - مدیریت کاربران
     </x-slot>
     <div class="p-5">
+        <a href="{{ route('users.create') }}" class="btn btn-primary mb-3"><i class="fa-light fa-user-plus"></i> افزودن کاربر جدید </a>
         <table class="table table-bordered table-responsive">
             <thead>
             <tr>
@@ -25,7 +26,10 @@
                     <td>@fat</td>
                     <td>@fat</td>
                     <td>@fat</td>
-                    <td>@fat</td>
+                    <td class="text-center">
+                        <a href="" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
+                        <a href="" class="text-dark"><i class="fa-light fa-trash"></i></a>
+                    </td>
                 </tr>
             </tbody>
         </table>
