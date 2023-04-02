@@ -26,7 +26,13 @@
                         <td>{{$row->getRole()}}</td>
                         <td>{{$row->getCreateAtShamsi()}}</td>
                         <td class="text-center">تایید شده</td>
-                        <td class="text-center">آنلاین</td>
+                        <td class="text-center">
+                            @if(Cache::has('user-is-online-' . $row->id))
+                                <span class="text-success"><i class="fa-light fa-circle"></i> آنلاین</span>
+                            @else
+                                <span class="text-secondary"><i class="fa-light fa-circle"></i> آفلاین</span>
+                            @endif
+                        </td>
                         <td class="text-center">
                             <a href="" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
                             <a href="" class="text-dark"><i class="fa-light fa-trash"></i></a>

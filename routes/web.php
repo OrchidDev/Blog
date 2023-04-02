@@ -24,7 +24,7 @@ Route::get('/admin', function () {
 
 //کاربران
 
-Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/admin/users', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 Route::get('/admin/users/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/admin/users/store', [UserController::class, 'store'])->name('users.store');
 Route::get('/admin/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
