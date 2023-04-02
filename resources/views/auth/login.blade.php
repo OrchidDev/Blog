@@ -28,7 +28,7 @@
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="privacy" name="privacy">
-                            <label class="form-check-label" for="privacy">شرایط و قوانین را می پذیرم</label>
+                            <label class="form-check-label" for="privacy">مرا به خاطر بسپار</label>
                             @error('privacy')
                             <div class="text-danger mt-3">
                                 {{ $message }}

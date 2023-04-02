@@ -1,6 +1,11 @@
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
     <div class="sidebar-heading text-center">میزکار</div>
+    <div class="mt-4 mb-4 text-center">
+        <i class="fa-light fa-user fa-4x"></i>
+        <h1 class="fs-6 fw-bold mt-3">نام: {{auth()->user()->name}}</h1>
+        <h1 class="fs-6 fw-bold mt-3">نقش : {{auth()->user()->getRole()}}</h1>
+    </div>
     <div class="list-group list-group-flush">
         <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
@@ -20,7 +25,12 @@
                     </button>
                 </h2>
                 <div id="2" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                    <div class="accordion-body">
+                        <ul>
+                            <li class="mb-2"><a href="" class="text-decoration-none text-dark">لیست کاربران</a></li>
+                            <li class="mb-2"><a href="" class="text-decoration-none text-dark">افزودن کاربر</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="accordion-item">
