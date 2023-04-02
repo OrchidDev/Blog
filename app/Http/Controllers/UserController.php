@@ -40,7 +40,12 @@ class UserController extends Controller
 
         User::create($data);
 
-        return redirect()->route('users.index');
+        $notification = array(
+            'message' => 'کاربر جدید با موفقیت ایجاد شد.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('users.index')->with($notification);
     }
 
     /**
