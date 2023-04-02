@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('admin');
+
+Route::resource('/admin/users', UserController::class)->except('show');
 
 
 require __DIR__.'/auth.php';
