@@ -23,8 +23,8 @@
                         <th scope="row">{{$row->id}}</th>
                         <td>{{$row->name}}</td>
                         <td>{{$row->email}}</td>
-                        <td>{{$row->role}}</td>
-                        <td>{{$row->created_at}}</td>
+                        <td>{{$row->getRole()}}</td>
+                        <td>{{$row->getCreateAtShamsi()}}</td>
                         <td class="text-center">تایید شده</td>
                         <td class="text-center">آنلاین</td>
                         <td class="text-center">

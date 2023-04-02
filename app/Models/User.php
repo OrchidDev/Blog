@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -57,5 +58,10 @@ class User extends Authenticatable
         {
             return 'مدیر سایت';
         }
+    }
+
+    public function getCreateAtShamsi()
+    {
+        return new Verta($this->created_at);
     }
 }
