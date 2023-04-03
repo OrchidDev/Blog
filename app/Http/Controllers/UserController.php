@@ -94,6 +94,13 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'کاربر جدید با موفقیت حذف شد.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('users.index')->with($notification);
     }
 }

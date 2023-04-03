@@ -35,7 +35,8 @@
                         </td>
                         <td class="text-center">
                             <a href="{{ route('users.edit', $row->id) }}" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
-                            <a href="" class="text-dark"><i class="fa-light fa-trash"></i></a>
+                            <a class="text-dark" onclick="event.preventDefault(); document.getElementById('trash-{{$row->id}}').submit()"><i class="fa-light fa-trash"></i></a>
+                            <form id="trash-{{$row->id}}" action="{{ route('users.destroy', $row->id) }}" method="POST">@csrf @method('DELETE')</form>
                         </td>
                     </tr>
                 @endforeach

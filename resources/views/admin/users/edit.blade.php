@@ -1,9 +1,12 @@
 <x-admin-layout>
     <x-slot name="title">
-        - ایجاد کاربر
+        - ویرایش کاربر
     </x-slot>
     <div class="p-5">
         <div class="col-md-6 offset-md-3">
+            <div class="p-2 text-center">
+                ویرایش کاربر : {{$user->name}}
+            </div>
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('users.update', $user->id) }}" method="POST">
