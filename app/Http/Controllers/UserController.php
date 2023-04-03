@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -60,17 +61,32 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        return view('admin.users.edit');
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:225'],
+            'email' => ['required', 'string', 'email', 'max:225', Rule::unique('users')->ignore($user->id)],
+            'role' => ['required', 'max:225']
+        ]);
+
+        $user->update(
+            $request->only(['name', 'email', 'role'])
+        );
+
+        $notification = array(
+            'message' => 'کاربر جدید با موفقیت ویرایش شد.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('users.index')->with($notification);
     }
 
     /**
