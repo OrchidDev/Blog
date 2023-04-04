@@ -24,7 +24,7 @@ Route::get('/admin', function () {
 
 //کاربران
 
-Route::resource('/admin/users', UserController::class)->except(['show']);
+Route::middleware(['auth', 'admin'])->resource('/admin/users', UserController::class)->except(['show']);
 
 
 // احراز هویت
