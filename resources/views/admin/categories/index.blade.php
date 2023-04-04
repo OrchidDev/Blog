@@ -15,17 +15,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td class="text-center">
-                                    <a href="#" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
-                                    <a href="#" class="text-dark"><i class="fa-light fa-trash"></i></a>
-                                </td>
-                            </tr>
-
+                            @foreach($categories as $row)
+                                <tr>
+                                    <th scope="row">{{$row->id}}</th>
+                                    <td>{{$row->name}}</td>
+                                    <td>{{$row->slug}}</td>
+                                    <td>{{$row->getParentName()}}</td>
+                                    <td class="text-center">
+                                        <a href="#" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
+                                        <a href="#" class="text-dark"><i class="fa-light fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
