@@ -65,6 +65,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        $notification = array(
+            'message' => 'دسته با موفقیت حذف شد.',
+            'alert-type' => 'success'
+        );
+
+        return back()->with($notification);
     }
 }
