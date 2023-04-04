@@ -22,7 +22,7 @@
                                     <td>{{$row->slug}}</td>
                                     <td>{{$row->getParentName()}}</td>
                                     <td class="text-center">
-                                        <a href="#" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
+                                        <a href="{{ route('categories.edit', $row->id) }}" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
                                         <a href="#" class="text-dark"><i class="fa-light fa-trash"></i></a>
                                     </td>
                                 </tr>

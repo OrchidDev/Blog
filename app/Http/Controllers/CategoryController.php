@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\CreateCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -38,15 +39,25 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $categoriese = Category::where('category_id', null)->where('id', '!=', $category->id)->get();
+        return view('admin.categories.edit', compact('category', 'categoriese'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $category->update(
+            $request->validated()
+        );
+
+        $notification = array(
+            'message' => 'دسته با موفقیت ویرایش شد.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('categories.index')->with($notification);
     }
 
     /**
