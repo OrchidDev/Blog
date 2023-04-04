@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,10 @@ Route::get('/admin', function () {
 
 //کاربران
 
-Route::middleware(['auth', 'admin'])->resource('/admin/users', UserController::class)->except(['show']);
+Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function (){
+    Route::resource('/users', UserController::class)->except(['show']);
+    Route::resource('/categories', CategoryController::class)->except('show');
+});
 
 
 // احراز هویت

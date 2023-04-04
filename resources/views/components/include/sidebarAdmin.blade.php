@@ -3,8 +3,8 @@
     <div class="sidebar-heading text-center">میزکار</div>
     <div class="mt-4 mb-4 text-center">
         <i class="fa-light fa-user fa-4x"></i>
-        <h1 class="fs-6 fw-bold mt-3">نام: </h1>
-        <h1 class="fs-6 fw-bold mt-3">نقش : </h1>
+        <h1 class="fs-6 fw-bold mt-3">نام: {{auth()->user()->name}}</h1>
+        <h1 class="fs-6 fw-bold mt-3">نقش : {{auth()->user()->getRole()}}</h1>
     </div>
     <div class="list-group list-group-flush">
         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -44,7 +44,7 @@
                 <div id="3" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul>
-                            <li><a href="" class="text-decoration-none text-dark">لیست دسته بندی</a></li>
+                            <li><a href="{{ route('categories.index') }}" class="text-decoration-none text-dark">لیست دسته بندی</a></li>
                         </ul>
                     </div>
                 </div>
