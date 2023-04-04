@@ -1,4 +1,7 @@
 <x-admin-layout>
+    <x-slot name="title">
+        - ویرایش دسته بندی
+    </x-slot>
     <div class="p-5">
         <div class="col-md-5 offset-md-3">
             <div class="card">

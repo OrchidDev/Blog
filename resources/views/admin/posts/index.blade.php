@@ -1,6 +1,9 @@
 <x-admin-layout>
+    <x-slot name="title">
+        - مدیریت نوشته ها
+    </x-slot>
     <div class="p-5">
-        <a href="#" class="btn btn-primary mb-3"><i class="fa-light fa-plus"></i> افزودن نوشته </a>
+        <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3"><i class="fa-light fa-plus"></i> افزودن نوشته </a>
         <table class="table table-bordered">
             <thead>
                 <tr>

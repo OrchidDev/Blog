@@ -1,4 +1,7 @@
 <x-admin-layout>
+    <x-slot name="title">
+        - مدیریت دسته بندی
+    </x-slot>
 <div class="p-5">
     <div class="row">
         <div class="col-md-8">
