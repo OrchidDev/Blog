@@ -31,8 +31,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">متن نوشته</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                                <label for="Textarea1" class="form-label">متن نوشته</label>
+                                <textarea class="form-control" id="editor" rows="6"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">ثبت نوشته</button>
