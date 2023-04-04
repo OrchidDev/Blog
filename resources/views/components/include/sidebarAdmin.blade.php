@@ -35,6 +35,7 @@
                     </div>
                 </div>
             @endif
+            @if(auth()->user()->role === 'admin')
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#3" aria-expanded="false" aria-controls="flush-collapseThree">
@@ -49,6 +50,8 @@
                     </div>
                 </div>
             </div>
+            @endif
+            @if(auth()->user()->role === 'admin' || auth()->user()->role === 'author')
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#4" aria-expanded="false" aria-controls="flush-collapseThree">
@@ -56,9 +59,15 @@
                     </button>
                 </h2>
                 <div id="4" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                    <div class="accordion-body">
+                        <ul>
+                            <li><a href="{{ route('posts.index') }}" class="text-decoration-none text-dark">لیست نوشته ها</a></li>
+                            <li><a href="{{ route('posts.create') }}" class="text-decoration-none text-dark">افزودن نوشته</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            @endif
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#5" aria-expanded="false" aria-controls="flush-collapseThree">
