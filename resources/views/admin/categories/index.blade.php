@@ -34,23 +34,39 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <form>
+                    <form action="{{ route('categories.store') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label for="Input1" class="form-label">عنوان فارسی</label>
-                            <input type="text" class="form-control" id="Input1">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="Input1" name="name">
+                            @error('name')
+                            <div class="text-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="Input2" class="form-label">عنوان انگلیسی</label>
-                            <input type="text" class="form-control" id="Input2">
+                            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="Input2" name="slug">
+                            @error('slug')
+                            <div class="text-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="Select1">دسته والد</label>
-                            <select class="form-select" aria-label="Default select example" id="Select1">
+                            <select class="form-select" aria-label="Default select example" id="Select1" name="category_id">
                                 <option selected disabled>انتخاب کنید ...</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                @foreach($categoriesp as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
                             </select>
+                            @error('category_id')
+                            <div class="text-danger mt-3">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">ثبت دسته</button>
                     </form>

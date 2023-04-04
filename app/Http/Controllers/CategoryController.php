@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Category\CreateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -12,33 +13,26 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $categories = Category::with('parent')->paginate();
+        $categoriesp = Category::where('category_id', null)->get();
+        return view('admin.categories.index', compact('categories', 'categoriesp'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        //
-    }
+        Category::create(
+            $request->validated()
+        );
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-        //
-    }
+        $notification = array(
+            'message' => 'دسته جدید با موفقیت ایجاد شد.',
+            'alert-type' => 'success'
+        );
 
+        return back()->with($notification);
+    }
     /**
      * Show the form for editing the specified resource.
      */
