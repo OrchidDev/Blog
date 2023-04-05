@@ -25,17 +25,21 @@ Route::get('/admin', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('admin');
 
-//کاربران
+
 
 Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function (){
+    // کاربران
     Route::resource('/users', UserController::class)->except(['show']);
+    // دسته بندی
     Route::resource('/categories', CategoryController::class)->except('show');
-    Route::resource('/posts', PostController::class)->except('show');
 });
 
-// آپلود عکس برای ویرایشگر سی کی
-
-Route::post('editor', [EditorController::class, 'upload'])->name('editor.upload');
+Route::middleware(['auth', 'author'])->prefix('/admin')->group(function (){
+    // نوشته ها
+    Route::resource('/posts', PostController::class)->except('show');
+    // آپلود عکس برای ویرایشگر سی کی
+    Route::post('editor', [EditorController::class, 'upload'])->name('editor.upload');
+});
 
 // احراز هویت
 

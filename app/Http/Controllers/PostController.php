@@ -12,9 +12,25 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('user')->paginate();
+        if(auth()->user()->role === 'author') {
+            $postsQuery = Post::where('user_id', auth()->user()->id)->with('user');
+
+            if ($request->search) {
+                $postsQuery->where('title', 'LIKE', "%{$request->search}%");
+            }
+
+            $posts = $postsQuery->paginate();
+        } else {
+            $postsQuery = Post::with('user');
+
+            if ($request->search) {
+                $postsQuery->where('title', 'LIKE', "%{$request->search}%");
+            }
+
+            $posts = $postsQuery->paginate(1);
+        }
         return view('admin.posts.index', compact('posts'));
     }
 
