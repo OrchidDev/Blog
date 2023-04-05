@@ -126,6 +126,14 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $this->authorize('delete', $post);
+        $post->delete();
+
+        $notification = array(
+            'message' => 'نوشته با موفقیت حذف شد.',
+            'alert-type' => 'success'
+        );
+
+        return back()->with($notification);
     }
 }

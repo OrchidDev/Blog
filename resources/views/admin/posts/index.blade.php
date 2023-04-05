@@ -35,7 +35,8 @@
                         <td style="width: 100px;">{{$post->getCreateAtShamsi()}}</td>
                         <td style="width: 100px;" class="text-center">
                             <a href="{{ route('posts.edit', $post->id) }}" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
-                            <a href="#" class="text-dark"><i class="fa-light fa-trash"></i></a>
+                            <a class="text-dark" onclick="event.preventDefault(); document.getElementById('trash-{{$post->id}}').submit()"><i class="fa-light fa-trash"></i></a>
+                            <form id="trash-{{$post->id}}" action="{{ route('posts.destroy', $post->id) }}" method="POST">@csrf @method('DELETE')</form>
                         </td>
                     </tr>
                 @endforeach
