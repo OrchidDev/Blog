@@ -26,6 +26,7 @@ class PostController extends Controller
         return view('admin.posts.create', compact('categories'));
     }
 
+
     /**
      * Store a newly created resource in storage.
      */

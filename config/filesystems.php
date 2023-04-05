@@ -44,12 +44,11 @@ return [
             'throw' => false,
         ],
 
-        'public_pic' => [
+        'public_files' => [
             'driver' => 'local',
             'root' => public_path(),
             'url' => env('APP_URL').'/',
             'visibility' => 'public',
-            'throw' => false,
         ],
 
         's3' => [

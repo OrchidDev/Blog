@@ -2,7 +2,7 @@
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('js/all.js')}}"></script>
 <script src="{{asset('js/toastr.min.js')}}"></script>
-<script src="{{asset('js/froala_editor.pkgd.min.js')}}"></script>
+<script src="{{asset('js/ckeditor.js')}}"></script>
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -43,7 +43,4 @@
         toastr.warning("{{ session('warning') }}");
     @endif
 </script>
-
-<script>
-    var editor = new FroalaEditor('#editor');
-</script>
+{{ $scripts ?? '' }}

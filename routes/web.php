@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EditorController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,7 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function (){
     Route::resource('/posts', PostController::class)->except('show');
 });
 
+Route::post('editor', [EditorController::class, 'upload'])->name('editor.upload');
 
 // احراز هویت
 

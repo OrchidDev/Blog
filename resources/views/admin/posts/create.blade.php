@@ -68,4 +68,23 @@
             </div>
         </div>
     </div>
+    <x-slot name="scripts">
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#editor' ), {
+                    ckfinder: {
+                        uploadUrl: '{{route('editor.upload').'?_token='.csrf_token()}}'
+                    }
+                },{
+                    alignment: {
+                        options: [ 'right', 'right' ]
+                    }} )
+                .then( editor => {
+                    console.log( editor );
+                })
+                .catch( error => {
+                    console.error( error );
+                })
+        </script>
+    </x-slot>
 </x-admin-layout>
