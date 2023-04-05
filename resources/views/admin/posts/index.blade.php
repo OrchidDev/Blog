@@ -34,7 +34,7 @@
                         <td style="width: 100px;">_</td>
                         <td style="width: 100px;">{{$post->getCreateAtShamsi()}}</td>
                         <td style="width: 100px;" class="text-center">
-                            <a href="#" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
+                            <a href="{{ route('posts.edit', $post->id) }}" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
                             <a href="#" class="text-dark"><i class="fa-light fa-trash"></i></a>
                         </td>
                     </tr>

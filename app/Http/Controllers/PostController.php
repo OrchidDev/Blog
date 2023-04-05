@@ -62,11 +62,16 @@ class PostController extends Controller
             $request->file('pic'));
         }
 
-//        $data['user_id'] = auth()->user()->id;
+        $data['user_id'] = auth()->user()->id;
 
         Post::create($data);
 
-        return redirect()->route('posts.index');
+        $notification = array(
+            'message' => 'نوشته جدید با موفقیت ایجاد شد.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('posts.index')->with($notification);
     }
 
     /**
@@ -82,7 +87,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -90,7 +96,29 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255'],
+            'category_id' => ['required', 'string'],
+            'pic' => ['required', 'image'],
+            'content' => ['required']
+        ]);
+
+        if ($request->file('pic')) {
+            $data['pic'] = Storage::putFile('postpic',
+                $request->file('pic'));
+        }
+
+        $data['user_id'] = auth()->user()->id;
+
+        $post->update($data);
+
+        $notification = array(
+            'message' => 'نوشته با موفقیت ویرایش شد.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('posts.index')->with($notification);
     }
 
     /**
