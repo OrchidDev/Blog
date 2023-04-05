@@ -33,6 +33,8 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function (){
     Route::resource('/posts', PostController::class)->except('show');
 });
 
+// آپلود عکس برای ویرایشگر سی کی
+
 Route::post('editor', [EditorController::class, 'upload'])->name('editor.upload');
 
 // احراز هویت

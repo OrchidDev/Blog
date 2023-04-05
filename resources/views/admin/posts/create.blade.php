@@ -54,7 +54,7 @@
 
                             <div class="mb-3">
                                 <label for="Textarea1" class="form-label">متن نوشته</label>
-                                <textarea class="form-control @error('content') is-invalid @enderror" id="editor" rows="6" name="content"></textarea>
+                                <textarea class="form-control @error('content') is-invalid @enderror" id="editor" rows="10" name="content"></textarea>
                                 @error('content')
                                 <div class="text-danger mt-3">
                                     {{ $message }}
@@ -74,11 +74,11 @@
                 .create( document.querySelector( '#editor' ), {
                     ckfinder: {
                         uploadUrl: '{{route('editor.upload').'?_token='.csrf_token()}}'
+                    },
+                    language: {
+                        content: 'ar'
                     }
-                },{
-                    alignment: {
-                        options: [ 'right', 'right' ]
-                    }} )
+                })
                 .then( editor => {
                     console.log( editor );
                 })
