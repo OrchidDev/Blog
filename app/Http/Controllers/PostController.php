@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -30,7 +31,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
+        $data = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255'],
+            'category_id' => ['required', 'string'],
+            'pic' => ['required', 'image'],
+            'content' => ['required']
+        ]);
+
+        if ($request->file('pic')) {
+            $data['pic'] = Storage::putFile('postpic',
+            $request->file('pic'));
+        }
+
+//        $data['user_id'] = auth()->user()->id;
+
+        Post::create($data);
+
+        return redirect()->route('posts.index');
     }
 
     /**

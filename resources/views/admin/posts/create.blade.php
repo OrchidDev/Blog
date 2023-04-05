@@ -12,30 +12,54 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="input1" class="form-label">عنوان نوشته</label>
-                                <input type="text" class="form-control" id="input1" name="title">
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="input1" name="title">
+                                @error('title')
+                                <div class="text-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="input2" class="form-label">نام انگلیسی نوشته</label>
-                                <input type="text" class="form-control" id="input2" name="slug">
+                                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="input2" name="slug">
+                                @error('slug')
+                                <div class="text-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="input3" class="form-label">انتخاب دسته</label>
-                                <select id="input3" class="form-select" name="category_id">
+                                <select id="input3" class="form-select @error('category_id') is-invalid @enderror" name="category_id">
                                     <option selected disabled>انتخاب کنید ... </option>
                                     @foreach ($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
                                 </select>
-
+                                @error('category_id')
+                                <div class="text-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="input4" class="form-label">آپلود عکس</label>
-                                <input type="file" class="form-control" id="input4" name="pic">
+                                <input type="file" class="form-control @error('pic') is-invalid @enderror" id="input4" name="pic" accept="image/*">
+                                @error('pic')
+                                <div class="text-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="Textarea1" class="form-label">متن نوشته</label>
-                                <textarea class="form-control" id="editor" rows="6" name="content"></textarea>
+                                <textarea class="form-control @error('content') is-invalid @enderror" id="editor" rows="6" name="content"></textarea>
+                                @error('content')
+                                <div class="text-danger mt-3">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">ثبت نوشته</button>
