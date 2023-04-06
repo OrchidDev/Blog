@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -39,6 +40,10 @@ Route::middleware(['auth', 'author'])->prefix('/admin')->group(function (){
     Route::resource('/posts', PostController::class)->except('show');
     // آپلود عکس برای ویرایشگر سی کی
     Route::post('editor', [EditorController::class, 'upload'])->name('editor.upload');
+    // نظرات
+    Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
 });
 
 // احراز هویت

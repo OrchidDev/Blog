@@ -28,7 +28,7 @@
                     <div id="2" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <ul>
-                                <li class="mb-2"><a href="{{ route('users.index') }}" class="text-decoration-none text-dark">لیست کاربران</a></li>
+                                <li class="mb-2"><a href="{{ route('users.index') }}" class="text-decoration-none text-dark">مدیریت کاربران</a></li>
                                 <li class="mb-2"><a href="{{ route('users.create') }}" class="text-decoration-none text-dark">افزودن کاربر</a></li>
                             </ul>
                         </div>
@@ -45,7 +45,7 @@
                 <div id="3" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul>
-                            <li><a href="{{ route('categories.index') }}" class="text-decoration-none text-dark">لیست دسته بندی</a></li>
+                            <li><a href="{{ route('categories.index') }}" class="text-decoration-none text-dark">مدیریت دسته بندی</a></li>
                         </ul>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <div id="4" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul>
-                            <li><a href="{{ route('posts.index') }}" class="text-decoration-none text-dark">لیست نوشته ها</a></li>
+                            <li><a href="{{ route('posts.index') }}" class="text-decoration-none text-dark">مدیریت نوشته ها</a></li>
                             <li><a href="{{ route('posts.create') }}" class="text-decoration-none text-dark">افزودن نوشته</a></li>
                         </ul>
                     </div>
@@ -75,7 +75,11 @@
                     </button>
                 </h2>
                 <div id="5" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                    <div class="accordion-body">
+                        <ul>
+                            <li><a href="{{ route('comments.index') }}" class="text-decoration-none text-dark">مدیریت نظرات</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
