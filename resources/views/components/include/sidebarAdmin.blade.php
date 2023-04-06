@@ -6,18 +6,11 @@
         <h1 class="fs-6 fw-bold mt-3">نام: {{auth()->user()->name}}</h1>
         <h1 class="fs-6 fw-bold mt-3">نقش : {{auth()->user()->getRole()}}</h1>
     </div>
+    <div class="text-center mb-3">
+        <a href="{{route('admin')}}" class="text-dark"><i class="fa-light fa-home fa-2x"></i></a>
+    </div>
     <div class="list-group list-group-flush">
         <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#1" aria-expanded="false" aria-controls="flush-collapseOne">
-                        صفحه اصلی
-                    </button>
-                </h2>
-                <div id="1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                </div>
-            </div>
             @if(auth()->user()->role === 'admin')
                 <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -68,6 +61,7 @@
                 </div>
             </div>
             @endif
+            @if(auth()->user()->role === 'admin')
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#5" aria-expanded="false" aria-controls="flush-collapseThree">
@@ -82,6 +76,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

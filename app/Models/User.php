@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return new Verta($this->created_at);
     }
+
+    public function getProfileUrl()
+    {
+        return asset('profile/users/' . $this->profile);
+    }
 }

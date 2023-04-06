@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,9 @@ Route::middleware(['auth', 'author'])->prefix('/admin')->group(function (){
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
     Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
 });
+
+Route::middleware('auth')->get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+Route::middleware('auth')->put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 // احراز هویت
 
