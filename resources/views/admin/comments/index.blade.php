@@ -17,19 +17,33 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row" style="width: 10px;">1</th>
-                <td style="width: 150px;">Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td style="width: 160px;">@mdo</td>
-                <td style="width: 120px;">@mdo</td>
-                <td style="width: 100px;">@mdo</td>
-                <td style="width: 130px;" class="text-center">
-                    <a href="" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>
-                    <a class="text-dark"><i class="fa-light fa-trash"></i></a>
-                </td>
-            </tr>
+            @foreach($comments as $comment)
+                <tr>
+                    <th scope="row" style="width: 10px;">{{ $comment->id }}</th>
+                    <td style="width: 150px;">{{ $comment->user->name }}</td>
+                    <td>{{ $comment->post->title }}</td>
+                    <td>{{ $comment->content }}</td>
+                    <td style="width: 160px;">{{ $comment->getCreateAtShamsi() }}</td>
+                    <td style="width: 120px;">{{ $comment->replies_count }}</td>
+                    <td style="width: 100px;" class="{{ $comment->is_approved ? 'text-success' : 'text-error' }}">{{ $comment->getStatus() }}</td>
+                    <td style="width: 130px;" class="text-center">
+                        @if($comment->is_approved)
+                            <a onclick="event.preventDefault(); document.getElementById('update-comment-{{$comment->id}}').submit()" title="رد"><i class="fa-light fa-x"></i></a>
+                        @else
+                            <a onclick="event.preventDefault(); document.getElementById('update-comment-{{$comment->id}}').submit()" title="تایید"><i class="fa-light fa-check"></i></a>
+                        @endif
+                        <a class="text-dark" onclick="event.preventDefault(); document.getElementById('trash-{{ $comment->id }}').submit()"><i class="fa-light fa-trash"></i></a>
+                        <form action="{{ route('comments.update', $comment->id) }}" method="post" id="update-comment-{{ $comment->id }}">
+                            @csrf
+                            @method('put')
+                        </form>
+                        <form action="{{ route('comments.destroy', $comment->id) }}" method="post" id="trash-{{ $comment->id }}">
+                            @csrf
+                            @method('delete')
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
