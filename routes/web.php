@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\EditorController;
@@ -23,11 +24,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('admin.index');
-})->middleware(['auth', 'verified'])->name('admin');
+//Route::get('/admin', function () {
+//    return view('admin.index');
+//})->middleware(['auth', 'verified'])->name('admin');
 
-
+Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth'])->name('admin');
 
 Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function (){
     // کاربران
