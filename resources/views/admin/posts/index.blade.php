@@ -31,7 +31,7 @@
                     <tr>
                         <th scope="row">{{$post->id}}</th>
                         <td style="width: 300px;">{{$post->title}}</td>
-                        <td style="width: 100px;">_</td>
+                        <td style="width: 100px;">{{ $post->user->name }}</td>
                         <td style="width: 100px;">{{$post->getCreateAtShamsi()}}</td>
                         <td style="width: 100px;" class="text-center">
                             <a href="{{ route('posts.edit', $post->id) }}" class="me-3 text-dark"><i class="fa-light fa-edit"></i></a>

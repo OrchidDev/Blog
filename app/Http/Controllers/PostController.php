@@ -29,7 +29,7 @@ class PostController extends Controller
                 $postsQuery->where('title', 'LIKE', "%{$request->search}%");
             }
 
-            $posts = $postsQuery->paginate(1);
+            $posts = $postsQuery->paginate(5);
         }
         return view('admin.posts.index', compact('posts'));
     }
@@ -57,10 +57,18 @@ class PostController extends Controller
             'content' => ['required']
         ]);
 
-        if ($request->file('pic')) {
-            $data['pic'] = Storage::putFile('postpic',
-            $request->file('pic'));
+        if ($request->hasFile('pic')) {
+            $file = $request->file('pic');
+            $file_name = $file->getClientOriginalName();
+            $file->storeAs('posts/pic', $file_name, 'public_files');
+
+            $data['pic'] = $file_name;
         }
+
+//        if ($request->file('pic')) {
+//            $data['pic'] = Storage::putFile('postpic',
+//            $request->file('pic'));
+//        }
 
         $data['user_id'] = auth()->user()->id;
 
@@ -126,7 +134,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $this->authorize('delete', $post);
         $post->delete();
 
         $notification = array(

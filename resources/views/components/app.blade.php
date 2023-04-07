@@ -6,8 +6,8 @@
     @include('components.include.style')
 </head>
 <body>
-@include('landing.navbar')
-    {{$slot}}
+@include('home.navbar')
+{{$slot}}
 @include('components.include.javascript')
 </body>
 </html>
