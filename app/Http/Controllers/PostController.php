@@ -65,11 +65,6 @@ class PostController extends Controller
             $data['pic'] = $file_name;
         }
 
-//        if ($request->file('pic')) {
-//            $data['pic'] = Storage::putFile('postpic',
-//            $request->file('pic'));
-//        }
-
         $data['user_id'] = auth()->user()->id;
 
         Post::create($data);
@@ -112,9 +107,12 @@ class PostController extends Controller
             'content' => ['required']
         ]);
 
-        if ($request->file('pic')) {
-            $data['pic'] = Storage::putFile('postpic',
-                $request->file('pic'));
+        if ($request->hasFile('pic')) {
+            $file = $request->file('pic');
+            $file_name = $file->getClientOriginalName();
+            $file->storeAs('posts/pic', $file_name, 'public_files');
+
+            $data['pic'] = $file_name;
         }
 
         $data['user_id'] = auth()->user()->id;

@@ -7,6 +7,7 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShowPostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/post/{post:slug}', [ShowPostController::class, 'show'])->name('post.show');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth'])->name('admin');
 

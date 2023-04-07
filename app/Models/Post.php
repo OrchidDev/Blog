@@ -11,7 +11,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    const LIMIT = 200;
+    const LIMIT = 300;
 
     protected $fillable = [
         'title',
