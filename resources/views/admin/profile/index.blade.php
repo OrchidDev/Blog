@@ -11,7 +11,7 @@
                         @method('PUT')
                         <div class="col-md-3 offset-md-4 mb-5 text-center">
                             <figure>
-                                <img src="{{ auth()->user()->getProfileUrl() }}" alt="">
+                                <img src="{{ auth()->user()->getProfileUrl() }}" class="img-fluid" style="border-radius: 50%;" alt="">
                             </figure>
                             <label for="input1" class="form-label">عکس نمایه</label>
                             <input type="file" class="form-control" id="input1" name="profile" accept="image/*">

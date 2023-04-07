@@ -3,7 +3,7 @@
     <div class="sidebar-heading text-center">میزکار</div>
     <div class="mt-4 mb-4 text-center">
         <figure>
-            <img src="{{ auth()->user()->getProfileUrl() }}" style="width: 100px;" alt="">
+            <img src="{{ auth()->user()->getProfileUrl() }}" style="width: 100px; border-radius: 50%;" alt="">
         </figure>
         <h1 class="fs-6 fw-bold mt-3">نام: {{auth()->user()->name}}</h1>
         <h1 class="fs-6 fw-bold mt-3">نقش : {{auth()->user()->getRole()}}</h1>

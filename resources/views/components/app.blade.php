@@ -5,9 +5,9 @@
     <!-- Styles -->
     @include('components.include.style')
 </head>
-<body class="antialiased">
-    @include('components.include.navbar')
+<body>
+@include('landing.navbar')
     {{$slot}}
-    @include('components.include.javascript')
+@include('components.include.javascript')
 </body>
 </html>

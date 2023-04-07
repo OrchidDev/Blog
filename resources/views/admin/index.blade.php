@@ -8,8 +8,8 @@
             <div class="col-md-3">
                 <div class="card text-center">
                     <div class="card-body">
-                        <p>تعداد پست ها</p>
-                        <p>{{ $posts_count }} پست</p>
+                        <p>تعداد نوشته ها</p>
+                        <p>{{ $posts_count }}</p>
                     </div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <p>تعداد نظرات</p>
-                        <p>{{ $comments_count }} نظر</p>
+                        <p>{{ $comments_count }}</p>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <p> تعداد کاربران </p>
-                        <p>{{ $users_count }} نفر</p>
+                        <p>{{ $users_count }}</p>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <p>تعداد دسته بندی ها</p>
-                        <p>{{ $categories_count }} نظر</p>
+                        <p>{{ $categories_count }}</p>
                     </div>
                 </div>
             </div>
