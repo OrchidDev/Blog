@@ -9,7 +9,7 @@
                     <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="col-md-3 offset-md-4 mb-5">
+                        <div class="col-md-3 offset-md-4 mb-5 text-center">
                             <figure>
                                 <img src="{{ auth()->user()->getProfileUrl() }}" alt="">
                             </figure>
