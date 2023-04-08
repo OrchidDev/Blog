@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-
+    protected $with = ['approvedReplies'];
     protected $fillable = [
         'content',
         'is_approved',

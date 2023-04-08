@@ -25,7 +25,7 @@
                     <td>{{ $comment->content }}</td>
                     <td style="width: 160px;">{{ $comment->getCreateAtShamsi() }}</td>
                     <td style="width: 120px;">{{ $comment->replies_count }}</td>
-                    <td style="width: 100px;" class="{{ $comment->is_approved ? 'text-success' : 'text-error' }}">{{ $comment->getStatus() }}</td>
+                    <td style="width: 100px;" class="{{ $comment->is_approved ? 'text-success fw-bold' : 'text-danger fw-bold' }}">{{ $comment->getStatus() }}</td>
                     <td style="width: 130px;" class="text-center">
                         @if($comment->is_approved)
                             <a onclick="event.preventDefault(); document.getElementById('update-comment-{{$comment->id}}').submit()" title="رد"><i class="fa-light fa-x"></i></a>

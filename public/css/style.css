@@ -58,3 +58,8 @@ body{
 figure.image img {
     max-width: 100%;
 }
+
+figure.avatar img{
+    border: 1px solid #e8e8e8;
+    border-radius: 50%;
+}

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+
 class Post extends Model
 {
     use HasFactory;
@@ -54,5 +55,10 @@ class Post extends Model
     public function limit()
     {
         return Str::limit($this->content, Post::LIMIT );
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
