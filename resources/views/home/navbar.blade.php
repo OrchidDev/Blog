@@ -31,16 +31,12 @@
                     <i class="fa-light fa-user"></i> {{auth()->user()->name}}
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">نمایه</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile.index') }}">نمایه</a></li>
                     <li><a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout').submit()">خروج</a></li>
                     <form id="logout" action="{{ route('logout') }}" method="POST">@csrf</form>
                 </ul>
             </div>
             @endguest
-
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            </form>
         </div>
     </div>
 </nav>

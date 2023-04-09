@@ -15,6 +15,9 @@
                         <i class="fa-light fa-user"></i> {{$post->user->name}}
                         <i class="fa-light fa-history ms-3"></i> {{$post->getCreateAtShamsi()}}
                         <i class="fa-light fa-comments ms-3"></i> {{$post->comments_count }}
+                        <div class="float-end">
+                            <span class="@if($post->is_user_liked) fa-solid @endif fa-regular fa-heart""></span>
+                        </div>
                     </div>
                 </article>
                 <div class="mt-4 mb-4">
@@ -34,7 +37,7 @@
                                 <button type="submit" class="btn btn-primary"><i class="fa-light fa-send"></i> ثبت دیدگاه </button>
                             </form>
                             @else
-                                <div class="alert alert-success" role="alert">
+                                <div class="alert alert-success mt-3" role="alert">
                                     شما برای ارسال نظر باید اول <a href="{{ route('login') }}" class="fw-bold text-decoration-none text-dark">وارد سایت شوید</a>
                                 </div>
                             @endauth
@@ -45,7 +48,7 @@
                                 </div>
                             @endif
 
-                        @foreach($post->comments as $comment)
+                            @foreach($post->comments as $comment)
                                 @include('single.comments.comment', ['comment' => $comment])
                             @endforeach
                         </div>
@@ -60,6 +63,19 @@
             function setReplyValue(id) {
                 document.getElementById('reply-input').value = id;
             }
+
+            $(".fa-regular").on("click", function () {
+                fetch('{{ route("like.post", $post->slug) }}', {
+                    method: 'post',
+                    headers: {
+                        'X-CSRF-Token': '{{ csrf_token() }}'
+                    }
+                }).then((response) => {
+                    if(response.ok) {
+                        $(this).toggleClass("fa-solid");
+                    }
+                })
+            })
         </script>
     </x-slot>
 </x-app-layout>

@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CommentSingleController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LikePostController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShowPostController;
@@ -26,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/post/{post:slug}', [ShowPostController::class, 'show'])->name('post.show');
 Route::middleware(['auth'])->post('/comment', [CommentSingleController::class, 'store'])->name('comment.store');
+Route::middleware(['auth', 'throttle:like'])->post('/like/{post:slug}', [LikePostController::class, 'store'])->name('like.post');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth'])->name('admin');
 

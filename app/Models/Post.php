@@ -12,7 +12,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    const LIMIT = 300;
+    const LIMIT = 150;
 
     protected $fillable = [
         'title',
@@ -60,5 +60,15 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes');
+    }
+
+    public function getIsUserLikedAttribute()
+    {
+        return $this->likes()->where('user_id', auth()->user()->id)->exists();
     }
 }

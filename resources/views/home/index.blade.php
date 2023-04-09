@@ -5,7 +5,7 @@
     <main class="container">
         <div class="row mt-4">
             <section class="col-md-8">
-                @foreach($posts as $post)
+                @forelse($posts as $post)
                     <a href="{{ route('post.show', $post->slug) }}" class="text-decoration-none text-dark">
                         <article class="card mb-3">
                             <div class="card-body">
@@ -22,7 +22,11 @@
                             </div>
                         </article>
                     </a>
-                @endforeach
+                @empty
+                    <div class="alert alert-dark" role="alert">
+                        هیچ نوشته ای یافت نشد!
+                    </div>
+                @endforelse
                 {{$posts->links()}}
             </section>
             @include('home.sidebar.sidebar')
