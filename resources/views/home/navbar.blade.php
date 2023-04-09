@@ -7,16 +7,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"><i class="fa-light fa-home"></i> </a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('home.index') }}"><i class="fa-light fa-home"></i> </a>
                 </li>
                 @foreach($categories as $category)
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="{{ route('category.show', $category->slug) }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{$category->name}}
                         </a>
                         <ul class="dropdown-menu">
                             @foreach($category->children as $childCategory)
-                                <li><a class="dropdown-item" href="#">{{ $childCategory->name }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('category.show', $childCategory->slug) }}">{{ $childCategory->name }}</a></li>
                             @endforeach
                         </ul>
                     </li>
