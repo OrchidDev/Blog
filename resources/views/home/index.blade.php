@@ -16,9 +16,6 @@
                                 <p>{{ $post->limit() }}</p>
                                 <i class="fa-light fa-user"></i> {{$post->user->name}}
                                 <i class="fa-light fa-history ms-3"></i> {{$post->getCreateAtShamsi()}}
-                                <div class="float-end">
-                                    <i class="fa-light fa-comments"></i>
-                                </div>
                             </div>
                         </article>
                     </a>

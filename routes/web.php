@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchPostController;
 use App\Http\Controllers\ShowPostCategoryController;
 use App\Http\Controllers\ShowPostController;
+use App\Http\Controllers\SidebarController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
