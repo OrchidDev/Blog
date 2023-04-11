@@ -15,7 +15,7 @@
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
             <ul class="list-group">
                 @foreach($posts as $post)
-                    <a href="" class="list-group-item">{{$post->title}}</a>
+                    <a href="{{ route('post.show', $post->slug) }}" class="list-group-item">{{$post->title}}</a>
                 @endforeach
             </ul>
         </div>
@@ -24,7 +24,7 @@
                 @foreach($comments as $comment)
                     <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{ $comment->user->name }}</h5>
+                            <h5 class="mb-1">{{ $comment->user->name }} می گوید : </h5>
                             <small>{{ $comment->created_at->diffForHumans() }}</small>
                         </div>
                         <p class="mb-1">{{ $comment->content }}.</p>
