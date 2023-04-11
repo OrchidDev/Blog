@@ -8,6 +8,7 @@
 <body>
 @include('home.navbar')
 {{$slot}}
+@include('home.footer')
 @include('components.include.javascript')
 </body>
 </html>
